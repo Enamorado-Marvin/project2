@@ -37,10 +37,8 @@ exports.edit = function(req, res) {
 
 exports.save = function(req, res) {
   var cols = [req.body.user_id, req.body.name, req.body.gender, req.body.birthdate, req.body.phone, req.body.email, 
-  			  req.body.occupation, req.body.date_added];
-
-  pool.query(
-    "INSERT INTO patient(user_id, name, gender, birthdate, phone, email, occupation, date_added) VALUES($1, $2, $3, $4, $5, $6, $7, NOW()) RETURNING * ",
+             req.body.occupation];
+    pool.query("INSERT INTO patient(user_id, name, gender, birthdate, phone, email, occupation, date_added) VALUES($1, $2, $3, $4, $5, $6, $7, NOW()) RETURNING * ",
     cols,
     function(err, result) {
       if (err) {
@@ -51,7 +49,7 @@ exports.save = function(req, res) {
   );
 };
 
-exports.update = function(req, res) {
+exports.update = function(req, reas) {
   // Postgres table column names go here
   var cols = [
     req.body.name, 

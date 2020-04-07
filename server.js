@@ -10,14 +10,14 @@ var app = express()
 // Use the set() method to store values
 app.set('port', process.env.PORT || 5000)
 
-// Set EJS engine as the default engine
-app.set('view engine', 'ejs')
-
 // Use the body-parser body parsing middleware
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'))
+
+// Set EJS engine as the default engine
+app.set('view engine', 'ejs')
 
 // Express routes for the HTTP 'GET' methods
 app.get('/', home)
